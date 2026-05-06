@@ -1,13 +1,1346 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="id">
 <head>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <title>Home</title>
-    <link rel="icon" href="/src/assets/images/favicon.ico" type="image/x-icon">
-    <link rel='stylesheet' href='main.css'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIRTONDI - Platform Pembelajaran Online Real-Time</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0052CC;
+            --primary-light: #0066FF;
+            --secondary: #FFED00;
+            --accent: #FF2D2D;
+            --dark: #003399;
+            --text-dark: #1a1a2e;
+            --text-light: #6B7280;
+            --bg-light: #F8FAFC;
+            --bg-white: #FFFFFF;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-white);
+            line-height: 1.6;
+        }
+
+        /* ========== HEADER & NAVIGATION ========== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            padding-bottom: 0.8rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-img {
+            height: 80px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 61, 165, 0.3);
+        }
+
+        /* ========== RUNNING TEXT ========== */
+        .running-text-container {
+            width: 100%;
+            background: linear-gradient(90deg, #00006b, var(--primary-light));
+            overflow: hidden;
+            padding: 0.8rem 0;
+            box-shadow: 0 2px 10px rgba(0, 82, 204, 0.2);
+        }
+
+        .running-text {
+            display: flex;
+            animation: scroll-left 20s linear infinite;
+            white-space: nowrap;
+        }
+
+        .running-text span {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: white;
+            padding: 0 2rem;
+            display: inline-block;
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            background: linear-gradient(180deg, #0052CC 0%, #1E7FD6 50%, #5BA3E8 100%);
+            color: white;
+            padding: 180px 2rem 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+           background: rgba(91, 163, 232, 0.15);
+            border-radius: 50%;
+            filter: blur(100px);
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+            animation: slideInLeft 0.8s ease;
+        }
+
+        .hero-text h1 .highlight {
+            color: #00006b;
+        }
+
+        .hero-text p {
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            line-height: 1.8;
+            animation: slideInLeft 0.8s ease 0.2s both;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            animation: slideInLeft 0.8s ease 0.4s both;
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(244, 181, 24, 0.4);
+        }
+
+        .hero-visual {
+            animation: slideInRight 0.8s ease;
+        }
+
+        .hero-visual img {
+            width: 100%;
+            max-width: 500px;
+            filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.3));
+        }
+
+        /* ========== FEATURES SECTION ========== */
+        .features {
+            padding: 100px 2rem;
+            background: var(--bg-light);
+            position: relative;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(180deg, rgba(0, 61, 165, 0.05), transparent);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .section-header h2 .accent {
+            color: #00006b;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 82, 204, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 61, 165, 0.15);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        /* ========== BENEFITS SECTION ========== */
+        .benefits {
+            padding: 100px 2rem;
+            background: white;
+        }
+
+        .benefits-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .benefits-text h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .benefits-text h2 .gold {
+            color: #00006b;
+        }
+
+        .benefits-list {
+            list-style: none;
+        }
+
+        .benefit-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 237, 0, 0.08);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 237, 0, 0.2);
+            border-left: 4px solid var(--secondary);
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(255, 237, 0, 0.1);
+        }
+
+        .benefit-item:hover {
+            background: white;
+            box-shadow: 0 10px 30px rgba(244, 181, 24, 0.15);
+        }
+
+        .benefit-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--secondary), #FFC934);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            color: white;
+        }
+
+        .benefit-text h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .benefit-text p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .benefits-visual {
+            display: flex;
+            justify-content: center;
+        }
+
+        .benefits-visual img {
+            width: 100%;
+            max-width: 400px;
+            filter: drop-shadow(0 20px 40px rgba(0, 61, 165, 0.2));
+        }
+
+        /* ========== PROGRAM STAGES SECTION ========== */
+        .program-stages {
+            padding: 100px 2rem;
+            background: linear-gradient(135deg, var(--bg-light), var(--bg-white));
+            position: relative;
+        }
+
+        .timeline-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 3rem auto 4rem;
+            position: relative;
+        }
+
+        .timeline-item {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .timeline-arrow {
+            display: none;
+            position: absolute;
+            right: -2.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        @media (min-width: 1024px) {
+            .timeline-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .timeline-item:not(:last-child) .timeline-arrow {
+                display: block;
+            }
+        }
+
+        .stage-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+            position: relative;
+            overflow: hidden;
+            border-left: 5px solid;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .stage-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .stage-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .stage-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* Stage Colors */
+        .stage-1 {
+            border-left-color: #0052CC;
+            background: linear-gradient(135deg, rgba(0, 82, 204, 0.05), white);
+        }
+
+        .stage-2 {
+            border-left-color: #FF2D2D;
+            background: linear-gradient(135deg, rgba(255, 45, 45, 0.05), white);
+        }
+
+        .stage-3 {
+            border-left-color: #FFED00;
+            background: linear-gradient(135deg, rgba(255, 237, 0, 0.08), white);
+        }
+
+        .stage-4 {
+            border-left-color: #0066FF;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.05), white);
+        }
+
+        .stage-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stage-label {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .stage-type {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.75rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .stage-1 .stage-type {
+            background: rgba(0, 82, 204, 0.2);
+            color: #0052CC;
+        }
+
+        .stage-2 .stage-type {
+            background: rgba(255, 45, 45, 0.2);
+            color: #FF2D2D;
+        }
+
+        .stage-3 .stage-type {
+            background: rgba(255, 237, 0, 0.25);
+            color: #ffaa00;
+        }
+
+        .stage-4 .stage-type {
+            background: rgba(0, 102, 255, 0.2);
+            color: #0066FF;
+        }
+
+        .stage-period {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .stage-content {
+            flex-grow: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .content-row:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .pie-icon, .book-icon, .clock-icon, .study-icon, .info-icon, .class-icon {
+            font-size: 1.8rem;
+            min-width: 40px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .content-text {
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            line-height: 1.5;
+        }
+
+        .content-text strong {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .stage-1 .content-text strong {
+            color: #0052CC;
+        }
+
+        .stage-2 .content-text strong {
+            color: #FF2D2D;
+        }
+
+        .stage-3 .content-text strong {
+            color: #FFED00;
+        }
+
+        .stage-4 .content-text strong {
+            color: #0066FF;
+        }
+
+        .stage-goal {
+            background: rgba(255, 237, 0, 0.12);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 1.2rem;
+            border-radius: 12px;
+            display: flex;
+            gap: 1rem;
+            border: 1px solid rgba(255, 237, 0, 0.25);
+            box-shadow: 0 4px 15px rgba(255, 237, 0, 0.1);
+        }
+
+        .goal-icon {
+            font-size: 1.8rem;
+            min-width: 40px;
+        }
+
+        .goal-text {
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            line-height: 1.5;
+        }
+
+        .goal-text strong {
+            display: block;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+            font-weight: 700;
+        }
+
+        /* Program Highlights */
+        .program-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            padding: 2rem;
+            background: rgba(0, 82, 204, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 82, 204, 0.15);
+        }
+
+        .highlight-card {
+            text-align: center;
+            color: var(--text-dark);
+        }
+
+        .highlight-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .highlight-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+
+        .highlight-desc {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        /* Stage CTA Banner */
+        .stage-cta-banner {
+            background: rgba(0, 82, 204, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            color: var(--primary);
+            position: relative;
+            overflow: hidden;
+            max-width: 1000px;
+            margin: 0 auto;
+            border: 1px solid rgba(0, 82, 204, 0.25);
+            box-shadow: 0 8px 32px rgba(0, 82, 204, 0.15);
+        }
+
+        .stage-cta-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(244, 181, 24, 0.1);
+            border-radius: 50%;
+            filter: blur(80px);
+        }
+
+        .banner-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .banner-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .stage-cta-banner h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+            color: var(--primary);
+        }
+
+        .stage-cta-banner p {
+            font-size: 1rem;
+            opacity: 0.85;
+            margin-bottom: 0;
+            color: var(--text-light);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .timeline-container {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-arrow {
+                display: none !important;
+            }
+
+            .stage-card {
+                padding: 1.5rem;
+            }
+
+            .stage-number {
+                font-size: 2rem;
+            }
+
+            .program-highlights {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stage-cta-banner h3 {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* ========== TESTIMONIAL ========== */
+        .testimonial {
+            background: linear-gradient(180deg, #0052CC 0%, #1E7FD6 50%, #5BA3E8 100%);
+            color: white;
+            padding: 80px 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial::before {
+            content: '"';
+            font-size: 200px;
+            opacity: 0.1;
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .testimonial-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        .testimonial-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .divider {
+            width: 60px;
+            height: 3px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .meta-text {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .meta-icon {
+            font-size: 1.5rem;
+        }
+
+        /* ========== CTA SECTION ========== */
+        .cta {
+            padding: 80px 2rem;
+            background: linear-gradient(135deg, var(--bg-light), var(--bg-white));
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .cta p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+
+        /* ========== ANIMATIONS ========== */
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                padding-top: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .benefits-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .testimonial-text {
+                font-size: 1.2rem;
+            }
+
+            .testimonial-meta {
+                flex-direction: column;
+            }
+
+            .cta h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to the Pirtondi Page</h1>
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="file:///D:/PIRTONDI%20NEW%20WEB/logo.png" alt="INTEN Logo" class="logo-img">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#features">Fitur</a></li>
+                <li><a href="#stages">Tahap Program</a></li>
+                <li><a href="#benefits">Keunggulan</a></li>
+                <li><a href="#cta"><button class="btn-primary">Mulai Sekarang</button></a></li>
+            </ul>
+        </nav>
+        <!-- RUNNING TEXT -->
+        <div class="running-text-container">
+            <div class="running-text">
+                <span>📢 Pembelajaran Tahun Ajaran Baru 2026/2027 Dimulai Tanggal 13 Juli 2026 📢 Pembelajaran Tahun Ajaran Baru 2026/2027 Dimulai Tanggal 13 Juli 2026 📢</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Apa Itu <span class="highlight">PIRTONDI?</span></h1>
+                <p>PIRTONDI (Prosus INTEN Real-Time Online Indonesia) adalah program belajar yang dirancang secara online (real-time) untuk membantu siswa mempersiapkan seleksi masuk Perguruan Tinggi Negeri.</p>
+                <div class="hero-cta">
+                    <a href="https://apply.prosusinten.org/registration-student/create" target="_blank" rel="noopener noreferrer" class="btn-secondary">Daftar Sekarang</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div style="width: 100%; max-width: 450px; margin: 0 auto; background: white; border-radius: 20px; padding: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.2);">
+                    <div style="background: linear-gradient(135deg, #003DA5, #0052CC); height: 250px; border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; text-align: center; padding: 20px;">
+                        📱 PIRTONDI Real-Time Learning Platform
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section class="features" id="features">
+        <div class="section-header">
+            <h2>Kenapa Memilih <span class="accent">PIRTONDI?</span></h2>
+            <p>Dapatkan keuntungan maksimal dengan fitur-fitur unggulan yang dirancang untuk kesuksesan Anda</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔴</div>
+                <h3>Belajar Langsung (Live)</h3>
+                <p>Interaksi real-time dengan pengajar berpengalaman. Tidak hanya menonton rekaman, tapi benar-benar berkomunikasi dua arah.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3>Interaktif dengan Pengajar</h3>
+                <p>Tanya jawab langsung, diskusi mendalam, dan pembahasan soal secara interaktif untuk pemahaman maksimal.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Fokus Persiapan SNBT & Seleksi PTN</h3>
+                <p>Kurikulum dirancang khusus untuk menghadapi ujian masuk perguruan tinggi negeri dengan strategi tepat.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🌍</div>
+                <h3>Fleksibel & Akses Nasional</h3>
+                <p>Belajar dari mana saja tanpa batasan lokasi geografis. Jangkauan penuh ke seluruh Indonesia dengan koneksi internet.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3>Interaktif & Real-Time</h3>
+                <p>Belajar bersama siswa lain dalam lingkungan yang dinamis dan mendukung. Format pembelajaran yang engaging dan tidak membosankan.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Program Disusun Khusus</h3>
+                <p>Strategi pembelajaran yang terstruktur dan terbukti efektif untuk persiapan PTN dengan hasil maksimal.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFITS SECTION -->
+    <section class="benefits" id="benefits">
+        <div class="benefits-content">
+            <div class="benefits-text">
+                <h2>Kenapa <span class="gold">PIRTONDI?</span></h2>
+                <ul class="benefits-list">
+                    <li class="benefit-item">
+                        <div class="benefit-icon">✓</div>
+                        <div class="benefit-text">
+                            <h4>Terjamin & Terarah</h4>
+                            <p>Program disusun khusus untuk strategi lolos PTN dengan panduan mentor berpengalaman.</p>
+                        </div>
+                    </li>
+                    <li class="benefit-item">
+                        <div class="benefit-icon">📈</div>
+                        <div class="benefit-text">
+                            <h4>Meningkatkan Peluang Lolos</h4>
+                            <p>Latihan intensif dan pembahasan terstruktur meningkatkan kemampuan dan kepercayaan diri menghadapi ujian.</p>
+                        </div>
+                    </li>
+                    <li class="benefit-item">
+                        <div class="benefit-icon">🌐</div>
+                        <div class="benefit-text">
+                            <h4>Fleksibel & Akses Nasional</h4>
+                            <p>Belajar dari mana saja tanpa batasan lokasi dengan akses penuh ke semua materi pembelajaran.</p>
+                        </div>
+                    </li>
+                    <li class="benefit-item">
+                        <div class="benefit-icon">💬</div>
+                        <div class="benefit-text">
+                            <h4>Interaktif & Real-Time</h4>
+                            <p>Belajar langsung dengan pengajar, tanya jawab real-time, dan tidak hanya video pasif (bukan video pasif).</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="benefits-visual">
+                <div style="width: 100%; max-width: 350px; margin: 0 auto; background: linear-gradient(135deg, #FFC934, #F4B518); border-radius: 20px; padding: 30px; box-shadow: 0 20px 50px rgba(244, 181, 24, 0.3);">
+                    <div style="background: white; border-radius: 15px; padding: 20px; text-align: center; margin-bottom: 15px;">
+                        <div style="font-weight: bold; color: #003DA5; margin-bottom: 10px;">📱 Live Class</div>
+                        <div style="background: linear-gradient(135deg, #003DA5, #0052CC); color: white; padding: 15px; border-radius: 10px; font-size: 0.85rem; font-weight: bold;">●LIVE</div>
+                    </div>
+                    <div style="color: white; text-align: center; font-size: 0.9rem; font-weight: 500;">Pembelajaran Real-Time untuk Kesuksesan Anda</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROGRAM STAGES SECTION -->
+    <section class="program-stages" id="stages">
+        <div class="section-header">
+            <h2>Empat <span class="accent">Tahap Program</span> INTEN</h2>
+            <p>Program intensif bertahap untuk meningkatkan keterampilan dan kesiapan UTBK</p>
+        </div>
+
+        <!-- Timeline -->
+        <div class="timeline-container">
+            <!-- Stage 1 -->
+            <div class="timeline-item">
+                <div class="stage-card stage-1">
+                    <div class="stage-number">01</div>
+                    <div class="stage-label">TAHAP 1</div>
+                    <div class="stage-type">REGULER</div>
+                    <div class="stage-period">📅 JULI – DESEMBER</div>
+                    
+                    <div class="stage-content">
+                        <div class="content-row">
+                            <div class="pie-icon">📊</div>
+                            <div class="content-text">
+                                <strong>60%</strong> KONSEP DAN<br><strong>40%</strong> MELATIH KETERAMPILAN
+                            </div>
+                        </div>
+                        <div class="content-row">
+                            <div class="book-icon">📚</div>
+                            <div class="content-text">
+                                <strong>80%</strong> SEKOLAH,<br><strong>20%</strong> UTBK-SNBT
+                            </div>
+                        </div>
+                        <div class="content-row">
+                            <div class="clock-icon">⏱️</div>
+                            <div class="content-text">
+                                PROAKTIF TAMBAHAN<br>MATERI SEKOLAH<br>DILUAR JAM BELAJAR<br>RESMI
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stage-goal">
+                        <div class="goal-icon">🎯</div>
+                        <div class="goal-text"><strong>TUJUAN</strong><br>Persiapan pelajar berbasis penguasaan konsep dan teori</div>
+                    </div>
+                </div>
+                <div class="timeline-arrow">→</div>
+            </div>
+
+            <!-- Stage 2 -->
+            <div class="timeline-item">
+                <div class="stage-card stage-2">
+                    <div class="stage-number">02</div>
+                    <div class="stage-label">TAHAP 2</div>
+                    <div class="stage-type">INTENSIF</div>
+                    <div class="stage-period">📅 JAN – UAS</div>
+                    
+                    <div class="stage-content">
+                        <div class="content-row">
+                            <div class="pie-icon">📊</div>
+                            <div class="content-text">
+                                <strong>30%</strong> KONSEP DAN<br><strong>70%</strong> MELATIH KETERAMPILAN
+                            </div>
+                        </div>
+                        <div class="content-row">
+                            <div class="book-icon">📚</div>
+                            <div class="content-text">
+                                <strong>20%</strong> SEKOLAH,<br><strong>80%</strong> UTBK-SNBT
+                            </div>
+                        </div>
+                        <div class="content-row">
+                            <div class="clock-icon">⏱️</div>
+                            <div class="content-text">
+                                PROAKTIF TAMBAHAN<br>MATERI SEKOLAH<br>DILUAR JAM BELAJAR<br>RESMI
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stage-goal">
+                        <div class="goal-icon">🎯</div>
+                        <div class="goal-text"><strong>TUJUAN</strong><br>Meningkatkan keterampilan mengerjakan soal sesuai durasi yang tersedia</div>
+                    </div>
+                </div>
+                <div class="timeline-arrow">→</div>
+            </div>
+
+            <!-- Stage 3 -->
+            <div class="timeline-item">
+                <div class="stage-card stage-3">
+                    <div class="stage-number">03</div>
+                    <div class="stage-label">TAHAP 3</div>
+                    <div class="stage-type">SUPER INTENSIF</div>
+                    <div class="stage-period">📅 SELESAI UAS – UTBK</div>
+                    
+                    <div class="stage-content">
+                        <div class="content-row">
+                            <div class="pie-icon">📊</div>
+                            <div class="content-text">
+                                <strong>100%</strong> PERSIAPAN UTBK,<br>MEMPERTAJAM KETERAMPILAN
+                            </div>
+                        </div>
+                        <div class="content-row">
+                            <div class="book-icon">📚</div>
+                            <div class="content-text">
+                                SEBELUM MENDAFTAR<br>UTBK-SNBT, SISWA<br>MENGIKUTI KONSULTASI<br>PEMILIHAN JURUSAN
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stage-goal">
+                        <div class="goal-icon">🎯</div>
+                        <div class="goal-text"><strong>TUJUAN</strong><br>Keterampilan mengidentifikasi, berpikir, menemukan solusi dan menebak</div>
+                    </div>
+                </div>
+                <div class="timeline-arrow">→</div>
+            </div>
+
+            <!-- Stage 4 -->
+            <div class="timeline-item">
+                <div class="stage-card stage-4">
+                    <div class="stage-number">04</div>
+                    <div class="stage-label">TAHAP 4</div>
+                    <div class="stage-type">MANDIRI PTN</div>
+                    <div class="stage-period">📅 SELESAI UTBK – .....</div>
+                    
+                    <div class="stage-content">
+                        <div class="content-row">
+                            <div class="study-icon">📖</div>
+                            <div class="content-text">
+                                BELAJAR TERJADWAL<br>DAN KELAS KHUSUS<br>MENYESUAIKAN MANDIRI<br>YANG AKAN DIIKUTI SISWA
+                            </div>
+                        </div>
+                        <div class="content-row">
+                            <div class="info-icon">📋</div>
+                            <div class="content-text">
+                                INFORMASI LENGKAP<br>TENTANG SELEKSI<br>MANDIRI PTN
+                            </div>
+                        </div>
+                        <div class="content-row">
+                            <div class="class-icon">🏫</div>
+                            <div class="content-text">
+                                KELAS SIMAK UI, UM UGM<br>CBT, SM ITB, MANDIRI<br>UNHAS, ....
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stage-goal">
+                        <div class="goal-icon">🎯</div>
+                        <div class="goal-text"><strong>TUJUAN</strong><br>Kelas persiapan mandiri akan dimulai setelah pelaksanaan UTBK</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Program Highlights -->
+        <div class="program-highlights">
+            <div class="highlight-card">
+                <div class="highlight-icon">📈</div>
+                <div class="highlight-title">4 TAHAP</div>
+                <div class="highlight-desc">Program terstruktur dan berkelanjutan</div>
+            </div>
+            <div class="highlight-card">
+                <div class="highlight-icon">🎯</div>
+                <div class="highlight-title">RATIO FOKUS</div>
+                <div class="highlight-desc">Kombinasi konsep dan keterampilan yang seimbang</div>
+            </div>
+            <div class="highlight-card">
+                <div class="highlight-icon">⏰</div>
+                <div class="highlight-title">PROGRESIF</div>
+                <div class="highlight-desc">Semakian terarah untuk hasil yang maksimal</div>
+            </div>
+            <div class="highlight-card">
+                <div class="highlight-icon">🏆</div>
+                <div class="highlight-title">TUJUAN AKHIR</div>
+                <div class="highlight-desc">Sukses UTBK dan lolos ke PTN impian</div>
+            </div>
+        </div>
+
+        <!-- Call to Action Banner -->
+        <div class="stage-cta-banner">
+            <div class="banner-content">
+                <div class="banner-icon">🚀</div>
+                <h3>Belajar Terarah, Latihan Maksimal, Prestasi Optimal!</h3>
+                <p>Mulai dari tahap 1 dan raih kesuksesan bersama program INTEN yang terbukti efektif</p>
+                <a href="https://apply.prosusinten.org/registration-student/create" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="margin-top: 1.5rem; display: inline-block;">Daftar Sekarang</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIAL -->
+    <section class="testimonial">
+        <div class="testimonial-content">
+            <p class="testimonial-text">Belajar lebih fleksibel, hasil lebih maksimal.</p>
+            <div class="testimonial-meta">
+                <div class="divider"></div>
+                <div class="meta-text">
+                    <span class="meta-icon">🎯</span>
+                    <span>Strategi tepat untuk masa depan di PTN impian.</span>
+                </div>
+                <div class="divider"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta" id="cta">
+        <div class="cta-content">
+            <h2>Siap Meraih PTN Impianmu?</h2>
+            <p>Bergabunglah dengan ribuan siswa yang telah mempersiapkan diri dengan PIRTONDI. Mulai perjalanan menuju kesuksesan Anda hari ini!</p>
+            <a href="https://apply.prosusinten.org/registration-student/create" target="_blank" rel="noopener noreferrer" class="btn-secondary">Daftar Sekarang!</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 PIRTONDI - Prosus INTEN Real-Time Online Indonesia. Semua hak dilindungi.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll behavior for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Add scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'slideInLeft 0.6s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .benefit-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
