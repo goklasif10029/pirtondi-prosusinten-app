@@ -170,7 +170,7 @@
             right: -10%;
             width: 600px;
             height: 600px;
-           background: rgba(91, 163, 232, 0.15);
+            background: rgba(91, 163, 232, 0.15);
             border-radius: 50%;
             filter: blur(100px);
         }
@@ -774,31 +774,429 @@
             color: var(--text-light);
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .timeline-container {
-                grid-template-columns: 1fr;
-            }
+        /* ========== PENGUMUMAN TRYOUT SECTION ========== */
+        .pengumuman {
+            padding: 100px 2rem;
+            background: var(--bg-white);
+            position: relative;
+        }
 
-            .timeline-arrow {
-                display: none !important;
-            }
+        .tryout-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
 
-            .stage-card {
-                padding: 1.5rem;
-            }
+        .tryout-card {
+            background: var(--bg-light);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border-top: 5px solid var(--primary);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-            .stage-number {
-                font-size: 2rem;
-            }
+        .tryout-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 61, 165, 0.1);
+        }
 
-            .program-highlights {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        .tryout-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-            .stage-cta-banner h3 {
-                font-size: 1.3rem;
-            }
+        .tryout-icon img {
+            max-width: 80px;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+        }
+
+        .tryout-card h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tryout-date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid var(--primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .tryout-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .btn-outline-alt {
+            background: transparent;
+            color: var(--text-dark);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid #CBD5E1;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .btn-outline-alt:hover {
+            background: var(--text-dark);
+            color: white;
+            border-color: var(--text-dark);
+        }
+
+        /* ========== MODAL PREVIEW PDF (FULL-SCREEN OPTIMIZED) ========== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s ease, visibility 0.35s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: white;
+            width: 100%;
+            height: 100%;
+            max-width: 100vw;
+            max-height: 100vh;
+            border-radius: 0; /* Sudut tajam agar terlihat rapi dan presisi di mode layar penuh */
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: none;
+            /* Efek meluncur dari bawah untuk transisi fullscreen yang premium */
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+
+        /* ========== CUSTOM PREMIUM PDF VIEWER (BARU) ========== */
+        .pdf-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            height: 56px;
+            padding: 0 16px;
+            border-bottom: 1px solid #e0e0e0;
+            user-select: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            z-index: 15;
+        }
+
+        .toolbar-left, .toolbar-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .download-btn-group {
+            display: flex;
+            align-items: center;
+            background: #1b8755; /* Warna hijau khas tombol Unduh */
+            color: #ffffff;
+            border-radius: 6px;
+            overflow: hidden;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .download-btn-group:hover {
+            background: #156a42;
+        }
+
+        .download-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 8px 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .download-caret {
+            background: transparent;
+            border: none;
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .toolbar-icon-btn {
+            background: transparent;
+            border: none;
+            color: #5f6368;
+            padding: 8px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .toolbar-icon-btn:hover {
+            background: #f1f3f4;
+            color: #202124;
+        }
+
+        .search-box-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-input {
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            padding: 6px 36px 6px 12px;
+            font-size: 0.85rem;
+            outline: none;
+            width: 180px;
+            transition: border-color 0.2s, width 0.2s;
+            font-family: 'Poppins', sans-serif;
+            background: #f8fafc;
+        }
+
+        .search-input:focus {
+            border-color: var(--primary);
+            width: 220px;
+            background: #ffffff;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 10px;
+            color: #5f6368;
+            pointer-events: none;
+            width: 18px;
+            height: 18px;
+        }
+
+        .toolbar-close-btn {
+            background: #f1f3f4;
+            border: none;
+            color: #5f6368;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .toolbar-close-btn:hover {
+            background: #d93025;
+            color: #ffffff;
+        }
+
+        /* Layout Area Utama (Sidebar + Dokumen) */
+        .pdf-viewer-middle {
+            display: flex;
+            flex-grow: 1;
+            height: calc(100% - 56px - 40px); /* Kurangi tinggi header & bottom bar */
+            overflow: hidden;
+            background: #f1f3f4;
+        }
+
+        .pdf-sidebar {
+            width: 68px;
+            background: #ffffff;
+            border-right: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 16px 0;
+            gap: 12px;
+            user-select: none;
+            z-index: 10;
+        }
+
+        .sidebar-icon-btn {
+            background: transparent;
+            border: none;
+            color: #5f6368;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .sidebar-icon-btn:hover {
+            background: #f1f3f4;
+            color: #202124;
+        }
+
+        .sidebar-divider {
+            width: 40px;
+            height: 1px;
+            background: #e0e0e0;
+            margin: 4px 0;
+        }
+
+        .page-indicator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .page-num-box {
+            border: 1px solid #dadce0;
+            border-radius: 6px;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #202124;
+            background: #ffffff;
+        }
+
+        .page-total {
+            font-size: 0.75rem;
+            color: #5f6368;
+            font-weight: 500;
+        }
+
+        /* Area Dokumen */
+        .pdf-document-container {
+            flex-grow: 1;
+            background: #f1f3f4; /* Background khas PDF viewer */
+            position: relative;
+            padding: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .pdf-document-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: #ffffff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Status Bar Bawah */
+        .pdf-bottom-bar {
+            height: 40px;
+            background: #ffffff;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 16px;
+            font-size: 0.8rem;
+            color: #5f6368;
+            font-weight: 500;
+            user-select: none;
+        }
+
+        .bottom-close-x {
+            background: transparent;
+            border: none;
+            color: #5f6368;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+        }
+
+        .bottom-close-x:hover {
+            color: #d93025;
+        }
+
+        /* Loading Spinner */
+        .loading-spinner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 4px solid rgba(0, 61, 165, 0.1);
+            border-left-color: var(--primary);
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            animation: spin 1s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes spin {
+            to { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
         /* ========== TESTIMONIAL ========== */
@@ -957,6 +1355,15 @@
             .cta h2 {
                 font-size: 1.8rem;
             }
+
+            /* Hilangkan sidebar kiri di ponsel pintar agar dokumen mendapatkan fokus utama */
+            .pdf-sidebar {
+                display: none;
+            }
+
+            .search-box-container {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -965,13 +1372,14 @@
     <header>
         <nav>
             <div class="logo">
-                <img src="images/logo.png" alt="INTEN Logo" class="logo-img">
+                <!-- Fallback otomatis jika logo.png lokal belum diletakkan di folder -->
+                <img src="images/logo.png" alt="INTEN Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/180x80/0052cc/ffffff?text=INTEN';">
             </div>
             <ul class="nav-links">
                 <li><a href="#about">Tentang</a></li>
                 <li><a href="#features">Fitur</a></li>
                 <li><a href="#stages">Tahap Program</a></li>
-                <li><a href="#benefits">Keunggulan</a></li>
+                <li><a href="#pengumuman">Pengumuman TO</a></li>
                 <li><a href="#cta"><button class="btn-primary">Mulai Sekarang</button></a></li>
             </ul>
         </nav>
@@ -990,7 +1398,7 @@
                 <h1>Apa Itu <span class="highlight">PIRTONDI?</span></h1>
                 <p>PIRTONDI (Prosus INTEN Real-Time Online Indonesia) adalah program belajar yang dirancang secara online (real-time) untuk membantu siswa mempersiapkan seleksi masuk Perguruan Tinggi Negeri.</p>
                 <div class="hero-cta">
-                    <a href="https://apply.prosusinten.org/registration-student/create" target="_blank" rel="noopener noreferrer" class="btn-secondary">Daftar Sekarang</a>
+                    <a href="https://prosusinten.org/registration-student/create" target="_blank" rel="noopener noreferrer" class="btn-secondary">Daftar Sekarang</a>
                 </div>
             </div>
             <div class="hero-visual">
@@ -1124,7 +1532,7 @@
                         <div class="content-row">
                             <div class="book-icon">📚</div>
                             <div class="content-text">
-                                <strong>80%</strong> SEKOLAH,<br><strong>20%</strong> UTBK-SNBT
+                                <strong>50%</strong> SEKOLAH,<br><strong>50%</strong> UTBK-SNBT
                             </div>
                         </div>
                         <div class="content-row">
@@ -1278,7 +1686,46 @@
                 <div class="banner-icon">🚀</div>
                 <h3>Belajar Terarah, Latihan Maksimal, Prestasi Optimal!</h3>
                 <p>Mulai dari tahap 1 dan raih kesuksesan bersama program INTEN yang terbukti efektif</p>
-                <a href="https://apply.prosusinten.org/registration-student/create" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="margin-top: 1.5rem; display: inline-block;">Daftar Sekarang</a>
+                <a href="https://prosusinten.org/registration-student/create" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="margin-top: 1.5rem; display: inline-block;">Daftar Sekarang</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PENGUMUMAN TRYOUT SECTION -->
+    <section class="pengumuman" id="pengumuman">
+        <div class="section-header">
+            <h2>Pengumuman <span class="accent">Hasil Tryout</span></h2>
+            
+        </div>
+
+        <div class="tryout-grid">
+            <!-- Card Tryout: Pengenalan UTBK-SNBT 2027 -->
+            <div class="tryout-card">
+                <div class="tryout-icon">
+                    <!-- Menggunakan togem.jpeg dengan fallback otomatis ke placeholder visual jika belum diletakkan di folder -->
+                    <img src="togem.jpeg" alt="Ikon Tryout Gem" onerror="this.onerror=null; this.src='https://placehold.co/80x80/0052cc/ffffff?text=TO';">
+                </div>
+                <h3>Tryout Pengenalan UTBK-SNBT 2027</h3>
+                <div class="tryout-date">
+                    <span>📅</span> 23 dan 30 Mei 2026
+                </div>
+                
+                <div class="tryout-actions">
+                    <!-- 1. Peringkat Tryout (Buka di Popup Full-Screen) -->
+                    <button class="btn-outline" onclick="openPdfModal('https://drive.google.com/file/d/1FLlPRV18l4bS_2_AAJ5H-UEjl-UBCSW5/view?usp=sharing', '🏆 Peringkat Tryout Pengenalan UTBK-SNBT 2027')">
+                        🏆 Peringkat Tryout
+                    </button>
+                    
+                    <!-- 2. Soal & Kunci Jawaban (Buka di Popup Full-Screen) -->
+                    <button class="btn-outline" onclick="openPdfModal('https://drive.google.com/file/d/1qDqUZIweR9G83_26IxyUX_Rq9nrC8BhA/view?usp=sharing', '📝 Soal & Kunci Jawaban Tryout Pengenalan')">
+                        📝 Soal & Kunci Jawaban
+                    </button>
+                    
+                    <!-- 3. Analisis Butir Soal (Langsung ke Google Drive) -->
+                    <a href="https://drive.google.com/drive/folders/1g7scFeH1Iqvj6UP9EI_eKlmvaQpY1GVb?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-outline-alt">
+                        📁 Analisis Butir Soal ↗
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -1303,7 +1750,7 @@
         <div class="cta-content">
             <h2>Siap Meraih PTN Impianmu?</h2>
             <p>Bergabunglah dengan ribuan siswa yang telah mempersiapkan diri dengan PIRTONDI. Mulai perjalanan menuju kesuksesan Anda hari ini!</p>
-            <a href="https://apply.prosusinten.org/registration-student/create" target="_blank" rel="noopener noreferrer" class="btn-secondary">Daftar Sekarang!</a>
+            <a href="https://prosusinten.org/registration-student/create" target="_blank" rel="noopener noreferrer" class="btn-secondary">Daftar Sekarang!</a>
         </div>
     </section>
 
@@ -1312,8 +1759,118 @@
         <p>&copy; 2026 PIRTONDI - Prosus INTEN Real-Time Online Indonesia. Semua hak dilindungi.</p>
     </footer>
 
+    <!-- MODAL PDF PREVIEW (FULL-SCREEN OPTIMIZED) -->
+    <div class="modal-overlay" id="pdfModal">
+        <div class="modal-content">
+            
+            <!-- TOOLBAR ATAS (TOP BAR - PERSIS SEPERTI GAMBAR USER) -->
+            <div class="pdf-toolbar">
+                <div class="toolbar-left">
+                    <!-- Tombol Unduh Hijau Premium -->
+                    <div class="download-btn-group">
+                        <button class="download-btn" onclick="handleDocumentDownload()" title="Unduh File">
+                            <!-- Icon Download Arrow -->
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            Unduh
+                        </button>
+                        <button class="download-caret" onclick="handleDocumentDownload()" title="Pilihan Unduhan">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                    </div>
+
+                    <!-- Bookmark Icon -->
+                    <button class="toolbar-icon-btn" title="Bookmark / Tandai Halaman">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                    </button>
+                    <!-- Share Icon -->
+                    <button class="toolbar-icon-btn" title="Bagikan Dokumen">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+                    </button>
+                    <!-- Menu Titik Tiga -->
+                    <button class="toolbar-icon-btn" title="Opsi Lainnya">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+                    </button>
+                </div>
+
+                <div class="toolbar-right">
+                    <!-- Search Input Box -->
+                    <div class="search-box-container">
+                        <input type="text" placeholder="Temukan dalam ..." class="search-input">
+                        <!-- Search Icon -->
+                        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </div>
+
+                    <!-- Full Screen Button -->
+                    <button class="toolbar-icon-btn" onclick="toggleIframeFullscreen()" title="Layar Penuh">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+                    </button>
+
+                    <!-- Close Button -->
+                    <button class="toolbar-close-btn" onclick="closePdfModal()">Tutup ✕</button>
+                </div>
+            </div>
+
+            <!-- AREA TENGAH (LEFT SIDEBAR + MAIN PREVIEW AREA) -->
+            <div class="pdf-viewer-middle">
+                
+                <!-- SIDEBAR KIRI -->
+                <div class="pdf-sidebar">
+                    <!-- TOC / Outline Button -->
+                    <button class="sidebar-icon-btn" title="Daftar Isi / Kerangka Dokumen">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                    </button>
+                    
+                    <div class="sidebar-divider"></div>
+
+                    <!-- Arrow Up -->
+                    <button class="sidebar-icon-btn" title="Halaman Sebelumnya">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                    </button>
+
+                    <!-- Page Indicator Simulator -->
+                    <div class="page-indicator">
+                        <div class="page-num-box">1</div>
+                        <span class="page-total">322</span>
+                    </div>
+
+                    <!-- Arrow Down -->
+                    <button class="sidebar-icon-btn" title="Halaman Berikutnya">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+
+                    <div class="sidebar-divider"></div>
+
+                    <!-- Zoom In -->
+                    <button class="sidebar-icon-btn" title="Perbesar Tampilan">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                    </button>
+
+                    <!-- Zoom Out -->
+                    <button class="sidebar-icon-btn" title="Perkecil Tampilan">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                    </button>
+                </div>
+
+                <!-- MAIN DISPLAY IFRAME -->
+                <div class="pdf-document-container">
+                    <div class="loading-spinner" id="pdfLoader"></div>
+                    <iframe id="pdfIframe" src="" allow="autoplay"></iframe>
+                </div>
+
+            </div>
+
+            <!-- BOTTOM STATUS BAR -->
+            <div class="pdf-bottom-bar">
+                <span>Pratinjau Dokumen PIRTONDI (Sains Indonesia Terintegrasi)</span>
+                <!-- Close Button X di Kanan Bawah -->
+                <button class="bottom-close-x" onclick="closePdfModal()" title="Tutup Penampil">✕</button>
+            </div>
+
+        </div>
+    </div>
+
     <script>
-        // Smooth scroll behavior for navigation links
+        // Smooth scroll behavior untuk tautan navigasi
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1324,7 +1881,7 @@
             });
         });
 
-        // Add scroll animation
+        // Efek animasi saat scroll
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1338,8 +1895,111 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.feature-card, .benefit-item').forEach(el => {
+        document.querySelectorAll('.feature-card, .benefit-item, .tryout-card').forEach(el => {
             observer.observe(el);
+        });
+
+        // ========== FUNGSI MODAL PDF & FOLDER GOOGLE DRIVE ==========
+        
+        let activeDocumentUrl = ''; // Menyimpan URL dokumen aktif untuk fungsi Unduh
+
+        function openPdfModal(target, title) {
+            const modal = document.getElementById('pdfModal');
+            const iframe = document.getElementById('pdfIframe');
+            const loader = document.getElementById('pdfLoader');
+            
+            // Tampilkan loader saat memuat ulang dokumen
+            loader.style.display = 'block';
+            
+            let embedUrl = '';
+            
+            // Sistem deteksi jenis link Google Drive secara otomatis
+            if (target.includes('drive.google.com')) {
+                if (target.includes('/folders/')) {
+                    // Jika link FOLDER: ekstrak ID folder lalu konversi ke mode embeddedfolderview
+                    const folderId = target.split('/folders/')[1].split('?')[0].split('/')[0];
+                    embedUrl = `https://drive.google.com/embeddedfolderview?id=${folderId}#grid`;
+                } else if (target.includes('/file/d/')) {
+                    // Jika link FILE PDF: ekstrak ID file lalu konversi ke mode preview
+                    const fileId = target.split('/file/d/')[1].split('/')[0].split('?')[0];
+                    embedUrl = `https://drive.google.com/file/d/${fileId}/preview`;
+                } else {
+                    embedUrl = target;
+                }
+            } else {
+                // Fallback jika yang dimasukkan hanyalah ID file mentah
+                embedUrl = `https://drive.google.com/file/d/${target}/preview`;
+            }
+            
+            activeDocumentUrl = target; // simpan link asli Google Drive untuk fungsionalitas Unduh
+            iframe.src = embedUrl;
+            
+            // Hilangkan spinner loader setelah iframe selesai dimuat
+            iframe.onload = function() {
+                loader.style.display = 'none';
+            };
+            
+            // Aktifkan modal
+            modal.classList.add('active');
+            
+            // Nonaktifkan scroll pada halaman utama agar fokus ke dokumen
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePdfModal() {
+            const modal = document.getElementById('pdfModal');
+            const iframe = document.getElementById('pdfIframe');
+            
+            modal.classList.remove('active');
+            
+            // Mengosongkan src iframe setelah modal ditutup agar proses muat data terhenti
+            setTimeout(() => {
+                iframe.src = '';
+                activeDocumentUrl = '';
+            }, 300);
+            
+            // Mengaktifkan kembali scroll pada halaman utama
+            document.body.style.overflow = 'auto';
+        }
+
+        // Fungsi Unduh Dokumen (Membuka versi Drive asli di tab baru agar siswa bisa mendownload/menyimpan)
+        function handleDocumentDownload() {
+            if (activeDocumentUrl) {
+                // Konversi URL ke mode view jika itu adalah pratinjau agar siswa mudah menekan tombol download bawaan Drive
+                let targetDownload = activeDocumentUrl;
+                if (targetDownload.includes('/preview')) {
+                    targetDownload = targetDownload.replace('/preview', '/view');
+                }
+                window.open(targetDownload, '_blank');
+            } else {
+                console.log("Dokumen tidak ditemukan atau belum dimuat sepenuhnya.");
+            }
+        }
+
+        // Fungsi Memaksimalkan Layar Iframe ke Layar Penuh Sistem Browser
+        function toggleIframeFullscreen() {
+            const iframe = document.getElementById('pdfIframe');
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.webkitRequestFullscreen) { /* Safari/iOS */
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) { /* IE11 */
+                iframe.msRequestFullscreen();
+            }
+        }
+
+        // Menutup modal dengan klik di luar area modal (pada overlay)
+        document.getElementById('pdfModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePdfModal();
+            }
+        });
+
+        // Menutup modal dengan menekan tombol ESC di keyboard
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && document.getElementById('pdfModal').classList.contains('active')) {
+                closePdfModal();
+            }
         });
     </script>
 </body>
