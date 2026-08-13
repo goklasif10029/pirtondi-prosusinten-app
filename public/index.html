@@ -1602,10 +1602,12 @@
                 transform: scale(1);
                 box-shadow: 0 0 0 0 rgba(255, 45, 45, 0.7);
             }
+
             70% {
                 transform: scale(1.05);
                 box-shadow: 0 0 0 6px rgba(255, 45, 45, 0);
             }
+
             100% {
                 transform: scale(1);
                 box-shadow: 0 0 0 0 rgba(255, 45, 45, 0);
@@ -1615,7 +1617,7 @@
         .tryout-card.highlighted-card {
             border: 2px solid transparent;
             background: linear-gradient(var(--bg-light), var(--bg-light)) padding-box,
-                        linear-gradient(135deg, var(--primary), var(--accent), var(--secondary)) border-box;
+                linear-gradient(135deg, var(--primary), var(--accent), var(--secondary)) border-box;
             box-shadow: 0 20px 50px rgba(0, 82, 204, 0.15), 0 0 30px rgba(255, 45, 45, 0.1);
             position: relative;
         }
@@ -1637,15 +1639,19 @@
         }
 
         @keyframes bounce-subtle {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0);
             }
+
             50% {
                 transform: translateY(-5px);
             }
         }
 
         @media (max-width: 576px) {
+
             /* 1. Ubah padding horizontal section agar pas di HP */
             .hero,
             .features,
@@ -1724,7 +1730,8 @@
 
             .pdf-toolbar .toolbar-icon-btn,
             .pdf-toolbar .download-caret {
-                display: none; /* Sembunyikan bookmark, share, options, fullscreen, caret */
+                display: none;
+                /* Sembunyikan bookmark, share, options, fullscreen, caret */
             }
 
             .pdf-toolbar .download-btn {
@@ -1756,6 +1763,7 @@
         }
 
         @media (max-width: 480px) {
+
             /* 6. Atur agar grid single-column penuh di layar kecil */
             .features-grid,
             .timeline-container {
@@ -1779,7 +1787,8 @@
                 <li><a href="#about">Tentang</a></li>
                 <li><a href="#features">Fitur</a></li>
                 <li><a href="#stages">Tahap Program</a></li>
-                <li><a href="#pengumuman" class="nav-highlight">Pengumuman TO <span class="badge-new">NEW</span></a></li>
+                <li><a href="#pengumuman" class="nav-highlight">Pengumuman TO <span class="badge-new">NEW</span></a>
+                </li>
                 <li><a href="#cta"><button class="btn-primary">Mulai Sekarang</button></a></li>
             </ul>
             <!-- MENU TOGGLE FOR TABLET & MOBILE -->
@@ -1899,21 +1908,24 @@
                         <div class="benefit-icon">📈</div>
                         <div class="benefit-text">
                             <h4>Meningkatkan Peluang Lolos</h4>
-                            <p>Latihan intensif dan pembahasan terstruktur meningkatkan kemampuan dan kepercayaan diri menghadapi ujian.</p>
+                            <p>Latihan intensif dan pembahasan terstruktur meningkatkan kemampuan dan kepercayaan diri
+                                menghadapi ujian.</p>
                         </div>
                     </li>
                     <li class="benefit-item">
                         <div class="benefit-icon">🌐</div>
                         <div class="benefit-text">
                             <h4>Fleksibel & Akses Nasional</h4>
-                            <p>Belajar dari mana saja tanpa batasan lokasi dengan akses penuh ke semua materi pembelajaran.</p>
+                            <p>Belajar dari mana saja tanpa batasan lokasi dengan akses penuh ke semua materi
+                                pembelajaran.</p>
                         </div>
                     </li>
                     <li class="benefit-item">
                         <div class="benefit-icon">💬</div>
                         <div class="benefit-text">
                             <h4>Interaktif & Real-Time</h4>
-                            <p>Belajar langsung dengan pengajar, tanya jawab real-time, dan tidak hanya video pasif (bukan video pasif).</p>
+                            <p>Belajar langsung dengan pengajar, tanya jawab real-time, dan tidak hanya video pasif
+                                (bukan video pasif).</p>
                         </div>
                     </li>
                 </ul>
@@ -1939,7 +1951,7 @@
                     <div class="stage-label">TAHAP 1</div>
                     <div class="stage-type">REGULER</div>
                     <div class="stage-period">📅 JULI – DESEMBER</div>
-                    
+
                     <div class="stage-content">
                         <div class="content-row">
                             <div class="pie-icon">📊</div>
@@ -1963,7 +1975,8 @@
 
                     <div class="stage-goal">
                         <div class="goal-icon">🎯</div>
-                        <div class="goal-text"><strong>TUJUAN</strong><br>Persiapan pelajar berbasis penguasaan konsep dan teori</div>
+                        <div class="goal-text"><strong>TUJUAN</strong><br>Persiapan pelajar berbasis penguasaan konsep
+                            dan teori</div>
                     </div>
                 </div>
                 <div class="timeline-arrow">→</div>
@@ -1976,7 +1989,7 @@
                     <div class="stage-label">TAHAP 2</div>
                     <div class="stage-type">INTENSIF</div>
                     <div class="stage-period">📅 JAN – UAS</div>
-                    
+
                     <div class="stage-content">
                         <div class="content-row">
                             <div class="pie-icon">📊</div>
@@ -2000,7 +2013,8 @@
 
                     <div class="stage-goal">
                         <div class="goal-icon">🎯</div>
-                        <div class="goal-text"><strong>TUJUAN</strong><br>Meningkatkan keterampilan mengerjakan soal sesuai durasi yang tersedia</div>
+                        <div class="goal-text"><strong>TUJUAN</strong><br>Meningkatkan keterampilan mengerjakan soal
+                            sesuai durasi yang tersedia</div>
                     </div>
                 </div>
                 <div class="timeline-arrow">→</div>
@@ -2013,7 +2027,7 @@
                     <div class="stage-label">TAHAP 3</div>
                     <div class="stage-type">SUPER INTENSIF</div>
                     <div class="stage-period">📅 SELESAI UAS – UTBK</div>
-                    
+
                     <div class="stage-content">
                         <div class="content-row">
                             <div class="pie-icon">📊</div>
@@ -2031,7 +2045,8 @@
 
                     <div class="stage-goal">
                         <div class="goal-icon">🎯</div>
-                        <div class="goal-text"><strong>TUJUAN</strong><br>Keterampilan mengidentifikasi, berpikir, menemukan solusi dan menebak</div>
+                        <div class="goal-text"><strong>TUJUAN</strong><br>Keterampilan mengidentifikasi, berpikir,
+                            menemukan solusi dan menebak</div>
                     </div>
                 </div>
                 <div class="timeline-arrow">→</div>
@@ -2044,7 +2059,7 @@
                     <div class="stage-label">TAHAP 4</div>
                     <div class="stage-type">MANDIRI PTN</div>
                     <div class="stage-period">📅 SELESAI UTBK – .....</div>
-                    
+
                     <div class="stage-content">
                         <div class="content-row">
                             <div class="study-icon">📖</div>
@@ -2068,7 +2083,8 @@
 
                     <div class="stage-goal">
                         <div class="goal-icon">🎯</div>
-                        <div class="goal-text"><strong>TUJUAN</strong><br>Kelas persiapan mandiri akan dimulai setelah pelaksanaan UTBK</div>
+                        <div class="goal-text"><strong>TUJUAN</strong><br>Kelas persiapan mandiri akan dimulai setelah
+                            pelaksanaan UTBK</div>
                     </div>
                 </div>
             </div>
@@ -2104,7 +2120,8 @@
                 <div class="banner-icon">🚀</div>
                 <h3>Belajar Terarah, Latihan Maksimal, Prestasi Optimal!</h3>
                 <p>Mulai dari tahap 1 dan raih kesuksesan bersama program INTEN yang terbukti efektif</p>
-                <a href="https://prosusinten.org/registration-student/create" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="margin-top: 1.5rem; display: inline-block;">Daftar Sekarang</a>
+                <a href="https://prosusinten.org/registration-student/create" target="_blank" rel="noopener noreferrer"
+                    class="btn-secondary" style="margin-top: 1.5rem; display: inline-block;">Daftar Sekarang</a>
             </div>
         </div>
     </section>
@@ -2121,27 +2138,31 @@
             <div class="tryout-card highlighted-card">
                 <div class="card-badge">TERBARU</div>
                 <div class="tryout-icon">
-                    <img src="images/TO PENGENALAN UTBK 2027.png" alt="Tryout Pengenalan soal UTBK 2027" onerror="this.onerror=null; this.src='https://placehold.co/80x80/0052cc/ffffff?text=TO';">
+                    <img src="images/TO PENGENALAN UTBK 2027.png" alt="Tryout Pengenalan soal UTBK 2027"
+                        onerror="this.onerror=null; this.src='https://placehold.co/80x80/0052cc/ffffff?text=TO';">
                 </div>
                 <div class="tryout-details">
                     <h3>Tryout Pengenalan soal UTBK 2027</h3>
                     <div class="tryout-date">
                         <span>📅</span> 9 Agustus 2027
                     </div>
-                    
+
                     <div class="tryout-actions">
                         <!-- 1. Peringkat Tryout (Buka di Popup Full-Screen) -->
-                        <button class="btn-outline" onclick="openPdfModal('https://drive.google.com/file/d/1OjK6DJsY35W9OixDNRh_RdhxNHCbcZxK/view?usp=sharing', '🏆 Peringkat Tryout Pengenalan soal UTBK 2027')">
+                        <button class="btn-outline"
+                            onclick="openPdfModal('https://drive.google.com/file/d/1jXUk5XESasPqaseCyF9ioACkHp9yuqiX/view?usp=sharing', '🏆 Peringkat Tryout Pengenalan soal UTBK 2027')">
                             🏆 Peringkat Tryout
                         </button>
-                        
+
                         <!-- 2. Soal & Kunci Jawaban (Langsung ke Google Drive) -->
-                        <a href="https://drive.google.com/drive/folders/1Ve1WS3ehDKTeHoyOyAyBn6Q7D4SnJDsL?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-outline-alt">
+                        <a href="https://drive.google.com/drive/folders/1Ve1WS3ehDKTeHoyOyAyBn6Q7D4SnJDsL?usp=sharing"
+                            target="_blank" rel="noopener noreferrer" class="btn-outline-alt">
                             📝 Soal & Kunci Jawaban ↗
                         </a>
-                        
+
                         <!-- 3. Analisis Butir Soal (Langsung ke Google Drive) -->
-                        <a href="https://drive.google.com/drive/folders/1RZAO_4iK0kxCIB8yxNwkDX6zZQuGsXVh" target="_blank" rel="noopener noreferrer" class="btn-outline-alt">
+                        <a href="https://drive.google.com/drive/folders/1RZAO_4iK0kxCIB8yxNwkDX6zZQuGsXVh"
+                            target="_blank" rel="noopener noreferrer" class="btn-outline-alt">
                             📁 Analisis Butir Soal ↗
                         </a>
                     </div>
@@ -2151,27 +2172,31 @@
             <!-- Card Tryout 2: Pengenalan UTBK-SNBT 2027 (Sebelumnya) -->
             <div class="tryout-card">
                 <div class="tryout-icon">
-                    <img src="images/togem.jpeg" alt="Tryout Pengenalan UTBK-SNBT 2027" onerror="this.onerror=null; this.src='https://placehold.co/80x80/0052cc/ffffff?text=TO';">
+                    <img src="images/togem.jpeg" alt="Tryout Pengenalan UTBK-SNBT 2027"
+                        onerror="this.onerror=null; this.src='https://placehold.co/80x80/0052cc/ffffff?text=TO';">
                 </div>
                 <div class="tryout-details">
                     <h3>Tryout Pengenalan UTBK-SNBT 2027</h3>
                     <div class="tryout-date">
                         <span>📅</span> 23 dan 30 Mei 2026
                     </div>
-                    
+
                     <div class="tryout-actions">
                         <!-- 1. Peringkat Tryout (Buka di Popup Full-Screen) -->
-                        <button class="btn-outline" onclick="openPdfModal('https://drive.google.com/file/d/1FLlPRV18l4bS_2_AAJ5H-UEjl-UBCSW5/view?usp=sharing', '🏆 Peringkat Tryout Pengenalan UTBK-SNBT 2027')">
+                        <button class="btn-outline"
+                            onclick="openPdfModal('https://drive.google.com/file/d/1FLlPRV18l4bS_2_AAJ5H-UEjl-UBCSW5/view?usp=sharing', '🏆 Peringkat Tryout Pengenalan UTBK-SNBT 2027')">
                             🏆 Peringkat Tryout
                         </button>
-                        
+
                         <!-- 2. Soal & Kunci Jawaban (Buka di Popup Full-Screen) -->
-                        <button class="btn-outline" onclick="openPdfModal('https://drive.google.com/file/d/1qDqUZIweR9G83_26IxyUX_Rq9nrC8BhA/view?usp=sharing', '📝 Soal & Kunci Jawaban Tryout Pengenalan')">
+                        <button class="btn-outline"
+                            onclick="openPdfModal('https://drive.google.com/file/d/1qDqUZIweR9G83_26IxyUX_Rq9nrC8BhA/view?usp=sharing', '📝 Soal & Kunci Jawaban Tryout Pengenalan')">
                             📝 Soal & Kunci Jawaban
                         </button>
-                        
+
                         <!-- 3. Analisis Butir Soal (Langsung ke Google Drive) -->
-                        <a href="https://drive.google.com/drive/folders/1g7scFeH1Iqvj6UP9EI_eKlmvaQpY1GVb?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-outline-alt">
+                        <a href="https://drive.google.com/drive/folders/1g7scFeH1Iqvj6UP9EI_eKlmvaQpY1GVb?usp=drive_link"
+                            target="_blank" rel="noopener noreferrer" class="btn-outline-alt">
                             📁 Analisis Butir Soal ↗
                         </a>
                     </div>
@@ -2198,8 +2223,10 @@
     <section class="cta" id="cta">
         <div class="cta-content">
             <h2>Siap Meraih PTN Impianmu?</h2>
-            <p>Bergabunglah dengan ribuan siswa yang telah mempersiapkan diri dengan PIRTONDI. Mulai perjalanan menuju kesuksesan Anda hari ini!</p>
-            <a href="https://prosusinten.org/registration-student/create" target="_blank" rel="noopener noreferrer" class="btn-secondary">Daftar Sekarang!</a>
+            <p>Bergabunglah dengan ribuan siswa yang telah mempersiapkan diri dengan PIRTONDI. Mulai perjalanan menuju
+                kesuksesan Anda hari ini!</p>
+            <a href="https://prosusinten.org/registration-student/create" target="_blank" rel="noopener noreferrer"
+                class="btn-secondary">Daftar Sekarang!</a>
         </div>
     </section>
 
@@ -2211,7 +2238,7 @@
     <!-- MODAL PDF PREVIEW (FULL-SCREEN OPTIMIZED) -->
     <div class="modal-overlay" id="pdfModal">
         <div class="modal-content">
-            
+
             <!-- TOOLBAR ATAS (TOP BAR - PERSIS SEPERTI GAMBAR USER) -->
             <div class="pdf-toolbar">
                 <div class="toolbar-left">
@@ -2219,25 +2246,48 @@
                     <div class="download-btn-group">
                         <button class="download-btn" onclick="handleDocumentDownload()" title="Unduh File">
                             <!-- Icon Download Arrow -->
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
                             Unduh
                         </button>
                         <button class="download-caret" onclick="handleDocumentDownload()" title="Pilihan Unduhan">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
                         </button>
                     </div>
 
                     <!-- Bookmark Icon -->
                     <button class="toolbar-icon-btn" title="Bookmark / Tandai Halaman">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                        </svg>
                     </button>
                     <!-- Share Icon -->
                     <button class="toolbar-icon-btn" title="Bagikan Dokumen">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="18" cy="5" r="3"></circle>
+                            <circle cx="6" cy="12" r="3"></circle>
+                            <circle cx="18" cy="19" r="3"></circle>
+                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                        </svg>
                     </button>
                     <!-- Menu Titik Tiga -->
                     <button class="toolbar-icon-btn" title="Opsi Lainnya">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="1"></circle>
+                            <circle cx="19" cy="12" r="1"></circle>
+                            <circle cx="5" cy="12" r="1"></circle>
+                        </svg>
                     </button>
                 </div>
 
@@ -2246,12 +2296,21 @@
                     <div class="search-box-container">
                         <input type="text" placeholder="Temukan dalam ..." class="search-input">
                         <!-- Search Icon -->
-                        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
                     </div>
 
                     <!-- Full Screen Button -->
                     <button class="toolbar-icon-btn" onclick="toggleIframeFullscreen()" title="Layar Penuh">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3">
+                            </path>
+                        </svg>
                     </button>
 
                     <!-- Close Button -->
@@ -2261,7 +2320,7 @@
 
             <!-- AREA TENGAH (MAIN PREVIEW AREA) -->
             <div class="pdf-viewer-middle">
-                
+
                 <!-- MAIN DISPLAY IFRAME -->
                 <div class="pdf-document-container">
                     <div class="loading-spinner" id="pdfLoader"></div>
@@ -2337,12 +2396,12 @@
             const modal = document.getElementById('pdfModal');
             const iframe = document.getElementById('pdfIframe');
             const loader = document.getElementById('pdfLoader');
-            
+
             // Tampilkan loader saat dokumen dimuat
             if (loader) loader.style.display = 'block';
-            
+
             let embedUrl = '';
-            
+
             // Deteksi jenis link Google Drive secara otomatis
             if (target.includes('drive.google.com')) {
                 if (target.includes('/folders/')) {
@@ -2359,15 +2418,15 @@
             } else {
                 embedUrl = `https://drive.google.com/file/d/${target}/preview`;
             }
-            
+
             activeDocumentUrl = target; // Simpan target URL untuk keperluan tombol unduh
             iframe.src = embedUrl;
-            
+
             // Hilangkan spinner loader setelah iframe selesai dimuat
-            iframe.onload = function() {
+            iframe.onload = function () {
                 if (loader) loader.style.display = 'none';
             };
-            
+
             // Aktifkan modal
             modal.classList.add('active');
             document.body.style.overflow = 'hidden'; // Kunci scroll halaman utama
@@ -2377,15 +2436,15 @@
         function closePdfModal() {
             const modal = document.getElementById('pdfModal');
             const iframe = document.getElementById('pdfIframe');
-            
+
             modal.classList.remove('active');
-            
+
             // Bersihkan src iframe setelah animasi fade out selesai
             setTimeout(() => {
                 iframe.src = '';
                 activeDocumentUrl = '';
             }, 300);
-            
+
             document.body.style.overflow = 'auto'; // Kembalikan scroll halaman utama
         }
 
@@ -2416,18 +2475,19 @@
         }
 
         // Menutup modal dengan klik di luar area modal (pada overlay)
-        document.getElementById('pdfModal').addEventListener('click', function(e) {
+        document.getElementById('pdfModal').addEventListener('click', function (e) {
             if (e.target === this) {
                 closePdfModal();
             }
         });
 
         // Menutup modal dengan menekan tombol ESC di keyboard
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape' && document.getElementById('pdfModal').classList.contains('active')) {
                 closePdfModal();
             }
         });
     </script>
 </body>
+
 </html>
