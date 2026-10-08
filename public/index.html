@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 
 <head>
@@ -878,9 +878,9 @@
 
         .tryout-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2.5rem;
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             align-items: stretch;
         }
@@ -2141,9 +2141,37 @@
         </div>
 
         <div class="tryout-grid">
-            <!-- Card Tryout 1 (Baru): Tryout Pengenalan soal UTBK 2027 -->
+            <!-- Card Tryout 1 (Baru): Hasil Tryout 1 TKA 2026 -->
             <div class="tryout-card highlighted-card">
                 <div class="card-badge">TERBARU</div>
+                <div class="tryout-icon">
+                    <img src="images/TRYOUT_TKA_2026.svg" alt="Hasil Tryout 1 TKA 2026"
+                        onerror="this.onerror=null; this.src='https://placehold.co/80x80/0052cc/ffffff?text=TO+TKA';">
+                </div>
+                <div class="tryout-details">
+                    <h3>Hasil Tryout 1 TKA 2026</h3>
+                    <div class="tryout-date">
+                        <span>📅</span> 4 Oktober 2026
+                    </div>
+
+                    <div class="tryout-actions">
+                        <!-- 1. Hasil Tryout (Buka di Popup Full-Screen) -->
+                        <button class="btn-outline"
+                            onclick="openPdfModal('https://drive.google.com/file/d/1iJlPGC6dOQTiv3ctwSnB4l1Xy1Yacq7z/view?usp=sharing', '🏆 Hasil Tryout 1 TKA 2026')">
+                            🏆 Hasil Tryout
+                        </button>
+
+                        <!-- 2. Soal & Kunci Jawaban (Langsung ke Google Drive) -->
+                        <a href="https://drive.google.com/drive/folders/13PCtyEmlgwvqPNgcxyHduLUi4YnvFRxr?usp=sharing"
+                            target="_blank" rel="noopener noreferrer" class="btn-outline-alt">
+                            📝 Soal & Kunci Jawaban ↗
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card Tryout 2: Tryout Pengenalan soal UTBK 2027 -->
+            <div class="tryout-card">
                 <div class="tryout-icon">
                     <img src="images/TO PENGENALAN UTBK 2027.png" alt="Tryout Pengenalan soal UTBK 2027"
                         onerror="this.onerror=null; this.src='https://placehold.co/80x80/0052cc/ffffff?text=TO';">
@@ -2176,7 +2204,7 @@
                 </div>
             </div>
 
-            <!-- Card Tryout 2: Pengenalan UTBK-SNBT 2027 (Sebelumnya) -->
+            <!-- Card Tryout 3: Pengenalan UTBK-SNBT 2027 (Sebelumnya) -->
             <div class="tryout-card">
                 <div class="tryout-icon">
                     <img src="images/togem.jpeg" alt="Tryout Pengenalan UTBK-SNBT 2027"
